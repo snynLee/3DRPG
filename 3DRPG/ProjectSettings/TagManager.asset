@@ -8,6 +8,7 @@ TagManager:
   - Melee
   - Monster
   - Monster1
+  - NPC
   layers:
   - Default
   - TransparentFX
