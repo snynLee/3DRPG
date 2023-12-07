@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Melee
   - Monster
+  - Monster1
   layers:
   - Default
   - TransparentFX
