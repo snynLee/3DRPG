@@ -5,34 +5,25 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public float MaxHp = 100;
-    public float currentHp = 100;
-    float decreaseHp;
+    private GameObject NPCDialog;
+    private Text NPCText;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        decreaseHp = (float)currentHp / (float)MaxHp;
-
+        NPCDialog = GameObject.Find("NPCDialog");
+        NPCText = GameObject.Find("NPCText").GetComponent<Text>();
+        NPCDialog.SetActive(false);
     }
 
-    private void Update()
+    public void NPCChatEnter(string text)
     {
-        decreaseHp = (float)currentHp / (float)MaxHp;
-        HandleHp();
+        NPCText.text = text;
+        NPCDialog.SetActive(true);
     }
 
-    public void HandleHp()
+    public void NPCChatExit()
     {
-        this.GetComponent<Slider>().value = Mathf.Lerp(this.GetComponent<Slider>().value, decreaseHp, Time.deltaTime * 10);
-    }
-
-    public void Damage(int n)
-    {
-        currentHp -= n;
-        if (currentHp <= 0)
-        {
-            currentHp = 0;
-        }
-    }
+        NPCText.text = " ";
+        NPCDialog.SetActive(false);
+    }    
 }
